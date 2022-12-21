@@ -1,4 +1,4 @@
-package com.client.helpers.exceptions;
+package com.client.exceptions;
 
 public class StringSameValidation {
     
