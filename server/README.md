@@ -1,2 +1,1 @@
-# WarcabyGame
- My and Vipo game
+Server Igor Urbanowicz
