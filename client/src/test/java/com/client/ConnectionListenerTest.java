@@ -1,4 +1,4 @@
-package com.client.game;
+package com.client;
 
 public class ConnectionListenerTest {
     
