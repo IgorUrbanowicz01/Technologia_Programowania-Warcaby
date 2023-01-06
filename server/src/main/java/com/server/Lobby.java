@@ -2,6 +2,8 @@ package com.server;
 
 import java.util.LinkedList;
 
+import main.java.com.board.GameType;
+
 /**
  * lobby
  */
@@ -17,6 +19,8 @@ public class Lobby {
     public Lobby() {
         numberOfPlayers = 0;
         players = new LinkedList<>();
+        GameType gameType = new GameType();
+        gameType.setType("Polish");
     }
 
     /**
@@ -25,7 +29,16 @@ public class Lobby {
      * @param newPlayer player to add
      */
     public void addPlayer(UserCommunicationThread newPlayer) {
-        // To Do
+        if (numberOfPlayers == 2)
+            return;
+        if (numberOfPlayers == 0) {
+            host = newPlayer.userData.getLogin();
+            name = host + "'s game";
+        }
+        numberOfPlayers++;
+        players.add(newPlayer);
+        newPlayer.setLobby(this);
+        sendLobbyInfo();
     }
 
     /**
@@ -34,14 +47,62 @@ public class Lobby {
      * @param playerToRemove player to remove
      */
     public void removePlayer(UserCommunicationThread playerToRemove) {
-        // To Do
+        if (!players.remove(playerToRemove))
+            return;
+        numberOfPlayers--;
+        if (numberOfPlayers == 0) {
+            ServerCore.getInstance().getLobbys().remove(this);
+        } else {
+            if (playerToRemove.userData.getLogin().equals(host)) {
+                host = players.get(0).userData.getLogin();
+            }
+        }
+        if (game != null) {
+            game.endGame();
+            game = null;
+        }
+
+        sendLobbyInfo();
     }
 
     /**
      * starts a game
      */
     public void start() {
-        // To Do
+        try {
+            game = new Game(this, gameType);
+            ServerCore.getInstance().getLobbys().remove(this);
+        } catch (Exception ignored) {
+        }
+    }
+
+    private LobbyInfoMessage getLobbyInfo() {
+        LobbyInfoMessage info = new LobbyInfoMessage();
+        info.setMessageType("LobbyInfo");
+        for (UserCommunicationThread uct : players) {
+            info.getPlayernames().add(uct.userData.getLogin());
+        }
+        info.setGameName(name);
+        return info;
+    }
+
+    public void sendLobbyInfo() {
+        deliverMessages(getLobbyInfo());
+    }
+
+    /**
+     * delivers message to all players in lobby
+     * 
+     * @param mh message to send
+     */
+    public void deliverMessages(MessageHolder mh) {
+        for (UserCommunicationThread uct : players) {
+            try {
+                uct.out.writeObject(mh);
+                ServerCore.getInstance().getController().appendOutput(mh.getMessageType());
+            } catch (Exception ignored) {
+            }
+        }
     }
 
     /**
@@ -58,7 +119,21 @@ public class Lobby {
     }
 
     public void setName(String name) {
-        // To Do
+        if (!name.equals("")) {
+            this.name = name;
+        } else {
+            this.name = host + "'s game";
+        }
+    }
+
+    /**
+     * @param type
+     */
+    public void setGameType(String type) {
+        try {
+            this.gameType.setType(type);
+        } catch (Exception ignoreException) {
+        }
     }
 
     /**
