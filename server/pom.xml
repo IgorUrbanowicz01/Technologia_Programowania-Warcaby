@@ -27,6 +27,13 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>17</version>
+      </dependency>
+
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
@@ -63,17 +70,22 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>18-ea+8</version>
+      <version>17</version>
     </dependency>
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-fxml</artifactId>
-      <version>18-ea+8</version>
+      <version>17.0.2-ea+2</version>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20190722</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>17</version>
     </dependency>
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -83,11 +95,6 @@
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-test</artifactId>
-        <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -120,10 +127,19 @@
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
+        
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
         </plugin>
+        <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.4</version>
+        <configuration>
+          <mainClass>com.server.App</mainClass>
+        </configuration>
+      </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>

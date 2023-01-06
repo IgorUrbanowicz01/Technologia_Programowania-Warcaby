@@ -3,11 +3,13 @@ package com.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import com.controllers.TerminalController;
 import com.messages.dummyLobbyClass;
-//import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 
@@ -22,6 +24,8 @@ public class ServerCore {
     private final LinkedList<UserCommunicationThread> userConnections;
     private final LinkedList<Lobby> serverLobbys;
     public boolean isRunning;
+    private DataBaseManager dataBaseManager;
+    public GameHistoryRepository gameHistoryRepository;
 
     /**
      * creates new server core
@@ -177,5 +181,10 @@ public class ServerCore {
             info.add(i, new dummyLobbyClass(lobby.getName(), lobby.getNumberOfPlayers(), lobby.getHost()));
         }
         return info;
+    }
+
+    @Transactional
+    public void saveGame(GameHistory gameHistory) {
+        System.out.println("Saving Game...");
     }
 }

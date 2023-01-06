@@ -1,4 +1,4 @@
-package com.controllers;
+package main.java.com.controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -39,18 +39,18 @@ public class TerminalController implements Initializable {
             history.addFirst(TerminalField.getText());
             historyindex = -1;
             TerminalField.setText("");
-        }else if(e.getCode()==KeyCode.UP){
-            if(historyindex<history.size()-1){
+        } else if (e.getCode() == KeyCode.UP) {
+            if (historyindex < history.size() - 1) {
                 historyindex++;
                 TerminalField.setText(history.get(historyindex));
             }
 
-        }else if(e.getCode()==KeyCode.DOWN){
-            if(historyindex>-1){
+        } else if (e.getCode() == KeyCode.DOWN) {
+            if (historyindex > -1) {
                 historyindex--;
-                if(historyindex==-1){
+                if (historyindex == -1) {
                     TerminalField.setText("");
-                }else {
+                } else {
                     TerminalField.setText(history.get(historyindex));
                 }
             }
@@ -63,7 +63,7 @@ public class TerminalController implements Initializable {
      * @param text text to add
      */
     public void append(String text) {
-        Platform.runLater(()->TerminalText.setText(TerminalText.getText() + "\n" + text));
+        Platform.runLater(() -> TerminalText.setText(TerminalText.getText() + "\n" + text));
 
     }
 
@@ -78,17 +78,19 @@ public class TerminalController implements Initializable {
 
     /**
      * adds string as input
+     * 
      * @param text text to add
      */
     public void appendInput(String text) {
-        Platform.runLater(()->InOutTextArea.setText(InOutTextArea.getText() + "\n<- " + text));
+        Platform.runLater(() -> InOutTextArea.setText(InOutTextArea.getText() + "\n<- " + text));
     }
 
     /**
      * adds string as output
+     * 
      * @param text text to add
      */
     public void appendOutput(String text) {
-        Platform.runLater(()->InOutTextArea.setText(InOutTextArea.getText() + "\n-> " + text));
+        Platform.runLater(() -> InOutTextArea.setText(InOutTextArea.getText() + "\n-> " + text));
     }
 }
