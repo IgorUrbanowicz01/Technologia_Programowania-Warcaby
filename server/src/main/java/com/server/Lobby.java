@@ -2,7 +2,7 @@ package com.server;
 
 import java.util.LinkedList;
 
-import main.java.com.board.GameType;
+import com.board.GameType;
 
 /**
  * lobby
@@ -11,7 +11,7 @@ public class Lobby {
     private String host, name;
     private int numberOfPlayers;
     private final LinkedList<UserCommunicationThread> players;
-    public Game game;
+    public GameType gameType;
 
     /**
      * creates a new lobby
@@ -19,7 +19,6 @@ public class Lobby {
     public Lobby() {
         numberOfPlayers = 0;
         players = new LinkedList<>();
-        GameType gameType = new GameType();
         gameType.setType("Polish");
     }
 
