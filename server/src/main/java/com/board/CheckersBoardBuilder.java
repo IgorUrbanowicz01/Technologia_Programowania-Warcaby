@@ -2,9 +2,6 @@ package com.board;
 
 import javax.print.attribute.Size2DSyntax;
 
-import com.board.GameType;
-import com.board.Pawn;
-
 /**
  * checkers board builder
  */
@@ -19,7 +16,7 @@ public class CheckersBoardBuilder {
      * @param numberOfPlayers number of players
      * @return this builder
      */
-    public CheckersBoardBuilder setType(GameType gameType) {
+    public void setType(GameType gameType) {
         this.gameType = gameType;
     }
 
@@ -46,10 +43,10 @@ public class CheckersBoardBuilder {
         return checkersBoard;
     }
 
-    public Pawn[][] buildEmpty() {
-        Pawn[][] board = new Pawn[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+    public Pawn[][] buildEmpty(int sizeOf) {
+        Pawn[][] board = new Pawn[sizeOf][sizeOf];
+        for (int i = 0; i < sizeOf; i++) {
+            for (int j = 0; j < sizeOf; j++) {
                 board[i][j] = new Pawn(0);
             }
         }

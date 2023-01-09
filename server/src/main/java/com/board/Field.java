@@ -1,4 +1,4 @@
-package main.java.com.board;
+package com.board;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;

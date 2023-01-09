@@ -2,8 +2,8 @@ package com.board;
 
 import javafx.scene.paint.Color;
 
-public class ChineseCheckersBoardAdapter {
-    ChineseCheckersBoard checkersBoard;
+public class CheckersBoardAdapter {
+    CheckersBoard checkersBoard;
     Field[][] fields;
     int radious = 15;
     MouseMoveHandler mmh;
@@ -12,7 +12,7 @@ public class ChineseCheckersBoardAdapter {
         return mmh;
     }
 
-    public ChineseCheckersBoardAdapter(ChineseCheckersBoard board) {
+    public CheckersBoardAdapter(CheckersBoard board) {
         checkersBoard = board;
         fields = new Field[board.getBoard().length][board.getBoard()[0].length];
         mmh = new MouseMoveHandler(this);
@@ -20,10 +20,10 @@ public class ChineseCheckersBoardAdapter {
     }
 
     public void setFields() {
-        int[][] board = checkersBoard.getBoard();
+        Pawn[][] board = checkersBoard.getBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
-                switch (board[x][y]) {
+                switch (board[x][y].getPlayer()) {
                     case -1 -> fields[x][y] = null;
                     case 0 -> fields[x][y] = new Field(2 * radious * y + 15, 3 * radious * x + 15, 1.5 * radious,
                             Color.WHITE, x, y);
@@ -46,7 +46,7 @@ public class ChineseCheckersBoardAdapter {
                 fields[x][y].setStrokeWidth(2);
                 fields[x][y].setOnMouseMoved(mouseEvent -> {
                     Field field = (Field) mouseEvent.getSource();
-                    ChineseCheckersBoard Logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
+                    CheckersBoard Logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
                     for (int i = 0; i < Logic.getBoard().length; i++) {
                         for (int j = 0; j < Logic.getBoard()[0].length; j++) {
                             if (Logic.getBoard()[i][j] == 1) {

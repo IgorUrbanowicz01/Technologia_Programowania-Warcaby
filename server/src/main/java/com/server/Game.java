@@ -1,6 +1,7 @@
 package com.server;
 
 import com.board.CheckersBoard;
+import com.board.GameType;
 import com.board.CheckersBoardBuilder;
 import com.messages.*;
 
@@ -31,7 +32,6 @@ public class Game {
     public Game(Lobby lobby, GameType gameType) throws Exception {
         this.lobby = lobby;
         this.gameType = gameType;
-        history = new GameHistory();
         ArrayList<String> logins = new ArrayList<>();
         lobby.getPlayers().forEach((e) -> logins.add(e.userData.getLogin()));
         history.setLogins(logins);

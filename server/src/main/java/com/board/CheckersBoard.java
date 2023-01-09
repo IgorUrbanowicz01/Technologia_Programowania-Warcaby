@@ -1,7 +1,5 @@
 package com.board;
 
-import com.board.Pawn;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +42,7 @@ public class CheckersBoard {
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception {
         Pawn[][] LogicBoard = gameType.setVaildmovesP(pawnY, pawnX, board);
         List<Integer> kils = LogicBoard[moveY][moveX].getKills();
-        if (LogicBoard.getBoard()[moveY][moveX].getPlayer() != 0) {
+        if (LogicBoard[moveY][moveX].getPlayer() != 0) {
             board[moveY][moveX].setPlayer(board[pawnY][pawnX].getPlayer());
             board[pawnY][pawnX].setPlayer(0);
             for (int i = 0; i < LogicBoard[moveY][moveX].getKillsSize(); i += 2) {
@@ -63,7 +61,7 @@ public class CheckersBoard {
      * @param pawnY pawn's Y coordinate (this is for choosing triangle to check)
      * @return true if is in target false otherwise
      */
-    public boolean isInTarget(int height, int width) {
+    public void isInTarget(int height, int width) {
         if (board[height][width].getPlayer() == 1) {
             if (height == gameType.getSize()) {
                 board[height][width].setKing();
@@ -87,11 +85,13 @@ public class CheckersBoard {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if(board[i][j].getPlayer() == 1)
+                if (board[i][j].getPlayer() == 1)
                     checksP2 = false;
-                if(board[i][j].getPlayer() == 2)
+                if (board[i][j].getPlayer() == 2)
                     checksP1 = false;
+            }
         }
+        return new boolean[] { checksP1, checksP2 };
     }
-    return new boolean[] {checksP1, checksP2};
+
 }
