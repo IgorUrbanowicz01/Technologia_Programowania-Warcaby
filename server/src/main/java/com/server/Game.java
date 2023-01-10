@@ -34,7 +34,6 @@ public class Game {
         this.gameType = gameType;
         ArrayList<String> logins = new ArrayList<>();
         lobby.getPlayers().forEach((e) -> logins.add(e.userData.getLogin()));
-        history.setLogins(logins);
         readyPlayers = 0;
         won = new boolean[2];
         Arrays.fill(won, false);
@@ -60,6 +59,10 @@ public class Game {
         jlm.setMessageType("turn");
         jlm.setHostName(lobby.getPlayers().get(currentPlayer).userData.getLogin());
         lobby.deliverMessages(jlm);
+    }
+
+    public void setGameType(GameType gameType) {
+        this.gameType = gameType;
     }
 
     /**

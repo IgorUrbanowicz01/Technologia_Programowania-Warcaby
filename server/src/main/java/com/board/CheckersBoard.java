@@ -30,6 +30,10 @@ public class CheckersBoard {
         return board;
     }
 
+    public Pawn[][] setValidMoves(int height, int width) {
+        return gameType.setVaildmovesP(height, width, board);
+    }
+
     /**
      * moves a pawn on the board
      * 

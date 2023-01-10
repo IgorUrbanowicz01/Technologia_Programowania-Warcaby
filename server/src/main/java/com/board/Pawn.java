@@ -1,7 +1,6 @@
 package com.board;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class Pawn {
     public int player, height, width;

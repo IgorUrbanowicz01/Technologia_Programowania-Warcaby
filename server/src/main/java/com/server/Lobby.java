@@ -1,8 +1,11 @@
 package com.server;
 
-import java.util.LinkedList;
+import com.messages.LobbyInfoMessage;
+import com.messages.MessageHolder;
 
+import java.util.LinkedList;
 import com.board.GameType;
+import com.board.PolishCheckers;
 
 /**
  * lobby
@@ -11,6 +14,7 @@ public class Lobby {
     private String host, name;
     private int numberOfPlayers;
     private final LinkedList<UserCommunicationThread> players;
+    public Game game;
     public GameType gameType;
 
     /**
@@ -19,7 +23,7 @@ public class Lobby {
     public Lobby() {
         numberOfPlayers = 0;
         players = new LinkedList<>();
-        gameType.setType("Polish");
+        this.setGameType("Polish");
     }
 
     /**
@@ -130,7 +134,9 @@ public class Lobby {
      */
     public void setGameType(String type) {
         try {
-            this.gameType.setType(type);
+            switch (type) {
+                case "Polish" -> gameType = new PolishCheckers();
+            }
         } catch (Exception ignoreException) {
         }
     }
