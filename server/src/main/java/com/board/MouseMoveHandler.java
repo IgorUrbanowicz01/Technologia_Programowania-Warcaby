@@ -7,9 +7,9 @@ import javafx.scene.input.MouseEvent;
  * Class for detecting users mouse events
  */
 public class MouseMoveHandler implements EventHandler<MouseEvent> {
-    ChineseCheckersBoardAdapter ccba;
+    CheckersBoardAdapter ccba;
 
-    public MouseMoveHandler(ChineseCheckersBoardAdapter ccba) {
+    public MouseMoveHandler(CheckersBoardAdapter ccba) {
         this.ccba = ccba;
     }
 

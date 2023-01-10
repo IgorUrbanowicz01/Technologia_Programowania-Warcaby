@@ -73,7 +73,6 @@ public class TerminalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ServerCore.getInstance().setController(this);
-        ServerCore.getInstance().ServerCoreSetup();
     }
 
     /**

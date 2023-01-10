@@ -46,13 +46,13 @@ public class CheckersBoardAdapter {
                 fields[x][y].setStrokeWidth(2);
                 fields[x][y].setOnMouseMoved(mouseEvent -> {
                     Field field = (Field) mouseEvent.getSource();
-                    CheckersBoard Logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
-                    for (int i = 0; i < Logic.getBoard().length; i++) {
-                        for (int j = 0; j < Logic.getBoard()[0].length; j++) {
-                            if (Logic.getBoard()[i][j] == 1) {
+                    Pawn[][] Logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
+                    for (int i = 0; i < Logic.length; i++) {
+                        for (int j = 0; j < Logic[0].length; j++) {
+                            if (Logic[i][j].getPlayer() == 1) {
                                 fields[i][j].setStroke(Color.DARKBLUE);
                                 fields[i][j].setStrokeWidth(5);
-                            } else if (Logic.getBoard()[i][j] == 0) {
+                            } else if (Logic[i][j].getPlayer() == 0) {
                                 fields[i][j].setStroke(Color.BLACK);
                                 fields[i][j].setStrokeWidth(2);
 
@@ -71,10 +71,10 @@ public class CheckersBoardAdapter {
 
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception {
         checkersBoard.move(pawnX, pawnY, moveX, moveY);
-        int[][] board = checkersBoard.getBoard();
+        Pawn[][] board = checkersBoard.getBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
-                switch (board[x][y]) {
+                switch (board[x][y].getPlayer()) {
                     case -1 -> fields[x][y] = null;
                     case 0 -> fields[x][y].setFill(Color.WHITE);
                     case 1 -> fields[x][y].setFill(Color.BLUE);

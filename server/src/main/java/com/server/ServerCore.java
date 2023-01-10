@@ -24,8 +24,6 @@ public class ServerCore {
     private final LinkedList<UserCommunicationThread> userConnections;
     private final LinkedList<Lobby> serverLobbys;
     public boolean isRunning;
-    private DataBaseManager dataBaseManager;
-    public GameHistoryRepository gameHistoryRepository;
 
     /**
      * creates new server core
@@ -183,8 +181,10 @@ public class ServerCore {
         return info;
     }
 
-    @Transactional
-    public void saveGame(GameHistory gameHistory) {
-        System.out.println("Saving Game...");
-    }
+    /*
+     * @Transactional
+     * public void saveGame(GameHistory gameHistory) {
+     * System.out.println("Saving Game...");
+     * }
+     */
 }
