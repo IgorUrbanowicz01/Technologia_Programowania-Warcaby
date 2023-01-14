@@ -1,7 +1,5 @@
 package com.client.controllers;
 
-<<<<<<< Updated upstream
-=======
 import java.net.MalformedURLException;
 import java.util.LinkedList;
 
@@ -30,7 +28,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
->>>>>>> Stashed changes
 /**
  * Class responsible for controlling the layout of the game and the
  * functionality.
@@ -40,11 +37,6 @@ public class GameViewController {
     @FXML
     public StackPane gameBoard;
     @FXML
-<<<<<<< Updated upstream
-    Text Player1, Player2;
-    @FXML
-    public Rectangle Color1, Color2;
-=======
     public Button skipRound;
     @FXML
     Text Player1;
@@ -52,7 +44,6 @@ public class GameViewController {
     @FXML
     public Rectangle Color1;
     public Rectangle Color2;
->>>>>>> Stashed changes
 
     LinkedList<String> playersNicknames;
     int playerCount;
@@ -60,12 +51,8 @@ public class GameViewController {
     static Group group = new Group();
     public int[] playerNumbers;
 
-<<<<<<< Updated upstream
-    private MouseMoveHandler mouseMovehHandler;
-=======
     private MouseMoveHandler mmh;
 
->>>>>>> Stashed changes
     /**
      * This method initialize Game View.
      * Also send to server instane of this controller.
@@ -73,10 +60,7 @@ public class GameViewController {
      */
     @FXML
     public void initialize() {
-<<<<<<< Updated upstream
-=======
         ClientCore.getInstance().setGameController(this);
->>>>>>> Stashed changes
 
     }
 
@@ -85,15 +69,12 @@ public class GameViewController {
      * @param playerNumber number of client number
      */
     public void startGameView(int playerCount, int playerNumber) {
-<<<<<<< Updated upstream
-=======
         this.playerCount = playerCount;
         this.playerNumber = playerNumber;
         gameBoard.getChildren().add(gameBoardLoader());
         gameBoard.setAlignment(Pos.CENTER);
         mmh.setPlayerNumber(playerNumber);
         setUsers();
->>>>>>> Stashed changes
 
     }
 
@@ -102,14 +83,10 @@ public class GameViewController {
      */
     @FXML
     public void skipRound() {
-<<<<<<< Updated upstream
-
-=======
         try {
             ClientCore.getInstance().skipRound();
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -117,10 +94,6 @@ public class GameViewController {
      * And show dasboard of lobbys
      */
     @FXML
-<<<<<<< Updated upstream
-    public void ExitGame() {
-
-=======
     public void exitGame() {
         try {
             ClientCore.getInstance().exitLobby();
@@ -133,7 +106,6 @@ public class GameViewController {
             stage.show();
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -142,9 +114,6 @@ public class GameViewController {
      * @return Group - game board
      */
     public Group gameBoardLoader() {
-<<<<<<< Updated upstream
-
-=======
         try {
             CheckersBoard board = new CheckersBoardBuilder().setSize(5).setNumberOfPlayers(playerCount)
                     .build();
@@ -161,7 +130,6 @@ public class GameViewController {
             }
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
         return group;
     }
 
@@ -169,21 +137,6 @@ public class GameViewController {
      * @return MouseMoveHandler - the MouseMoveHandler
      */
     public MouseMoveHandler getMouseMoveHandler() {
-<<<<<<< Updated upstream
-        return mouseMoveHandler;
-    }
-
-    private void setUsers() {
-
-    }
-
-    private Paint setColor(int playerNumber) {
-
-        return COLOR;
-    }
-
-}
-=======
         return mmh;
     }
 
@@ -196,4 +149,3 @@ public class GameViewController {
 
     }
 }
->>>>>>> Stashed changes

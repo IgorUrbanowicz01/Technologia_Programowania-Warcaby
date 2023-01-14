@@ -1,23 +1,5 @@
 package com.client.controllers;
 
-<<<<<<< Updated upstream
-/**
-* Class responsible for controlling the layout of the login screen and the
-* functionality.
-*/
-public class RegisteryController {
-    @FXML
-    private Button buttonnBack, buttonCreateAccount;
-    @FXML
-    private TextField newLogin, newPassword, checkNewPassword;
-    @FXML
-    Pane errorRegisteryNewAccount, errorPanePassword, accountCreatedSuccesfully, errorPanePasswordValidation,
-            avatarError, errorSomethinkWrong, errorrThisLoginIsToShort;
-    private static Stage stage;
-    private static Parent root;
-
-        /**
-=======
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -72,7 +54,6 @@ public class RegisteryController implements Initializable {
 
 
     /**
->>>>>>> Stashed changes
      * Method for initialize controller and send it to server
      * 
      * @param url            users url
@@ -80,11 +61,7 @@ public class RegisteryController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-<<<<<<< Updated upstream
-
-=======
         ClientCore.getInstance().setRegisteryController(this);
->>>>>>> Stashed changes
     }
 
     private boolean allCorect = false;
@@ -103,9 +80,6 @@ public class RegisteryController implements Initializable {
      * @throws NumberFormatException
      */
     @FXML
-<<<<<<< Updated upstream
-    private void CreateAccountButtonController(ActionEvent e)
-=======
     private void createAccountButtonController(ActionEvent e)
             throws NumberFormatException, StringSameValidation, Exception {
 
@@ -131,7 +105,6 @@ public class RegisteryController implements Initializable {
             }
 
         }
->>>>>>> Stashed changes
 
     }
 
@@ -142,14 +115,10 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void errorPaneLoginExistButton(ActionEvent e) {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorRegisteryNewAccount);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -159,14 +128,10 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void errorPanePasswordButton(ActionEvent e) {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorPanePassword);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -176,15 +141,11 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void accountCreatedSuccesfullyButton(ActionEvent e) {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(false);
         transition.setNode(accountCreatedSuccesfully);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -194,15 +155,11 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void errorLoginValidation(ActionEvent e) {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(false);
         transition.setNode(errorrThisLoginIsToShort);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -212,14 +169,10 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void errorPasswordValidtionButtonController(ActionEvent e) {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorPanePasswordValidation);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -229,24 +182,10 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void errorSomethinkWrongButton(ActionEvent e) {
-<<<<<<< Updated upstream
-
-    }
-
-    /**
-     * Method to close the error pane
-     * 
-     * @param e users actionEvent
-     */
-    @FXML
-    private void errorAvaratValidtionButtonController(ActionEvent e) {
-
-=======
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorSomethinkWrong);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -257,31 +196,20 @@ public class RegisteryController implements Initializable {
      */
     @FXML
     private void backButtonController(ActionEvent e) throws IOException {
-<<<<<<< Updated upstream
-
-    }
-
-
-=======
         loadLoingLauncher();
     }
 
->>>>>>> Stashed changes
     /**
      * Method is invokes when account is creat succesfully, and clean the form
      * 
      * 
      */
     public void accountCreatedSuccesfullyNotification() {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(true);
         transition.setNode(accountCreatedSuccesfully);
         transition.setToX(-300);
         transition.play();
->>>>>>> Stashed changes
 
     }
 
@@ -291,43 +219,31 @@ public class RegisteryController implements Initializable {
      * 
      */
     private void cleanForm() {
-<<<<<<< Updated upstream
-
-=======
         newLogin.setText("");
         newPassword.setText("");
         checkNewPassword.setText("");
->>>>>>> Stashed changes
     }
 
     /**
      * Method which invokes when login is taken
      */
     public void errorNotification() {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(true);
         transition.setNode(errorRegisteryNewAccount);
         transition.setToX(-300);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
      * Method which invokes when any error
      */
     public void errorSomethinkWrong() {
-<<<<<<< Updated upstream
-
-=======
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(true);
         transition.setNode(errorSomethinkWrong);
         transition.setToX(-300);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
@@ -335,10 +251,6 @@ public class RegisteryController implements Initializable {
      * 
      * @throws IOException throws if an error occurs
      */
-<<<<<<< Updated upstream
-    private void LoadLoingLauncher() throws IOException {
-
-=======
     private void loadLoingLauncher() throws IOException {
         stage = (Stage) buttonCreateAccount.getScene().getWindow();
         root = FXMLLoader.load(Routes.viewsRoute("LoginIntoLauncher.fxml"));
@@ -346,7 +258,6 @@ public class RegisteryController implements Initializable {
         scene.getStylesheets().add(Routes.styleRoute("app.css"));
         stage.setScene(scene);
         stage.show();
->>>>>>> Stashed changes
     }
 
     /**
@@ -358,9 +269,6 @@ public class RegisteryController implements Initializable {
      *                               least
      */
     public boolean passwordValidation(String password) throws StringLengthException {
-<<<<<<< Updated upstream
-
-=======
         if (password.length() > 4) {
             return true;
         } else {
@@ -370,7 +278,6 @@ public class RegisteryController implements Initializable {
             transition.play();
             return false;
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -382,12 +289,6 @@ public class RegisteryController implements Initializable {
      * @throws StringSameValidation throws if passwords isn't the same
      */
     public boolean passwordCheckValidation(String password, String checkPassword) throws StringSameValidation {
-<<<<<<< Updated upstream
-
-    }
-
-
-=======
         if (password.equals(checkPassword)) {
             return true;
         } else {
@@ -399,7 +300,6 @@ public class RegisteryController implements Initializable {
         }
     }
 
->>>>>>> Stashed changes
     /**
      * Method also invokes the error information
      * 
@@ -408,8 +308,6 @@ public class RegisteryController implements Initializable {
      */
     private boolean loginValidation(String string) {
 
-<<<<<<< Updated upstream
-=======
         if (string.length() > 0) {
             return true;
         } else {
@@ -419,7 +317,6 @@ public class RegisteryController implements Initializable {
             transition.play();
             return false;
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -438,8 +335,4 @@ public class RegisteryController implements Initializable {
         return allCorect;
     }
 
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes
