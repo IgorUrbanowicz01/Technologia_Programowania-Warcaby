@@ -1,7 +1,5 @@
 package com.client.controllers;
 
-<<<<<<< Updated upstream
-=======
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,19 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
->>>>>>> Stashed changes
 /**
  * Class responsible for controlling the layout of the login screen and the
  * functionality.
  */
-<<<<<<< Updated upstream
-public class LoginIntoLauncherController {
-    
-    @FXML
-    private Button LoginButton, RegisteryButton;
-    @FXML
-    private TextField LoginField, PasswordField;
-=======
 public class LoginIntoLauncherController implements Initializable {
 
     @FXML
@@ -43,7 +32,6 @@ public class LoginIntoLauncherController implements Initializable {
     @FXML
     private TextField LoginField;
     private TextField PasswordField;
->>>>>>> Stashed changes
     @FXML
     private URL location;
     @FXML
@@ -60,11 +48,7 @@ public class LoginIntoLauncherController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-<<<<<<< Updated upstream
-
-=======
         ClientCore.getInstance().setLoginIntoLauncherController(this);
->>>>>>> Stashed changes
     }
 
     /**
@@ -74,9 +58,6 @@ public class LoginIntoLauncherController implements Initializable {
      * @throws Exception
      */
     @FXML
-<<<<<<< Updated upstream
-    private void LoginLauncherControllerButtons(ActionEvent event) throws Exception {
-=======
     private void loginLauncherControllerButtons(ActionEvent event) throws Exception {
         try {
             if (event.getSource() == LoginButton) {
@@ -86,7 +67,6 @@ public class LoginIntoLauncherController implements Initializable {
             }
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
 
     }
 
@@ -99,40 +79,27 @@ public class LoginIntoLauncherController implements Initializable {
      */
     @FXML
     private void errorButton(ActionEvent e) {
-<<<<<<< Updated upstream
- 
-=======
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(ErrorPane);
         transition.setToX(0);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
      * Method which invokes error pane, and animation
      */
-<<<<<<< Updated upstream
-    public void ErrorNotification() {
-
-=======
     public void errorNotification() {
         TranslateTransition transition = new TranslateTransition();
         ErrorPane.setVisible(true);
         transition.setNode(ErrorPane);
         transition.setToX(-285);
         transition.play();
->>>>>>> Stashed changes
     }
 
     /**
      * Method responsible for loade the dasboard view scene
      * 
      */
-<<<<<<< Updated upstream
-    public void LoadDashboardScene() {
-        
-=======
     public void loadDashboardScene() {
         Platform.runLater(new Runnable() {
             @Override
@@ -150,7 +117,6 @@ public class LoginIntoLauncherController implements Initializable {
                 }
             }
         });
->>>>>>> Stashed changes
     }
 
     /**
@@ -158,10 +124,6 @@ public class LoginIntoLauncherController implements Initializable {
      * 
      * @throws IOException throws if an error occurs
      */
-<<<<<<< Updated upstream
-    private void LoadRegisteryScene() throws IOException {
-);
-=======
     private void loadRegisteryScene() throws IOException {
         stage = (Stage) RegisteryButton.getScene().getWindow();
         root = FXMLLoader.load(Routes.viewsRoute("RegisterView.fxml"));
@@ -169,7 +131,6 @@ public class LoginIntoLauncherController implements Initializable {
         scene.getStylesheets().add(Routes.styleRoute("app.css"));
         stage.setScene(scene);
         stage.show();
->>>>>>> Stashed changes
     }
 
 }

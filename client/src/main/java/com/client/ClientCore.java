@@ -1,7 +1,5 @@
 package com.client;
 
-<<<<<<< Updated upstream
-=======
 import com.client.controllers.*;
 import com.messages.*;
 import javafx.stage.Stage;
@@ -10,7 +8,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.List;
 
->>>>>>> Stashed changes
 /**
  * class being the core of the client.
  * this class is a singleton
@@ -24,20 +21,11 @@ public class ClientCore {
     LobbyController lobbyController;
     GameViewController gameController;
     ConnectionListener conlis;
-<<<<<<< Updated upstream
-    String Login;;
-=======
     String Login;
->>>>>>> Stashed changes
     LobbyInfoMessage lobbyInfo;
     public String currentPlayer;
     public Stage programStage;
     public boolean myTurn = false;
-<<<<<<< Updated upstream
-    public List<History> gameHistory;
-    public gamesHistory gamesHistoryController;
-=======
->>>>>>> Stashed changes
 
     /**
      * Singletion
@@ -45,9 +33,6 @@ public class ClientCore {
      * @return ClientCore instance of ClientCore
      */
     public static ClientCore getInstance() {
-<<<<<<< Updated upstream
-
-=======
         if (instance == null) {
             synchronized (ClientCore.class) {
                 if (instance == null) {
@@ -56,7 +41,6 @@ public class ClientCore {
             }
         }
         return instance;
->>>>>>> Stashed changes
     }
 
     /**
@@ -202,13 +186,9 @@ public class ClientCore {
      * @throws Exception if an error occurs
      */
     public void reqServerConnection(String ip, String port) throws Exception {
-<<<<<<< Updated upstream
-        
-=======
         Socket client = new Socket(ip, Integer.parseInt(port));
         conlis = new ConnectionListener(client);
         conlis.start();
->>>>>>> Stashed changes
     }
 
     /**
@@ -219,15 +199,11 @@ public class ClientCore {
      * @throws Exception throws if an error occurs
      */
     public void reqLogin(String login, String password) throws Exception {
-<<<<<<< Updated upstream
-
-=======
         LoginMessage lm = new LoginMessage();
         lm.setMessageType("login");
         lm.setLogin(login);
         lm.setPassword(password);
         conlis.getOut().writeObject(lm);
->>>>>>> Stashed changes
     }
 
     /**
@@ -238,25 +214,18 @@ public class ClientCore {
      * @param chosenAvatar id of chosen avatar
      * @throws Exception throws if something error occurs
      */
-<<<<<<< Updated upstream
-    public void reqCreateNewAccount(String newLogin, String newPassword, int chosenAvatar) throws Exception {
-
-=======
     public void reqCreateNewAccount(String newLogin, String newPassword) throws Exception {
         RegisterMessage rm = new RegisterMessage();
         rm.setMessageType("register");
         rm.setLogin(newLogin);
         rm.setPassword(newPassword);
         conlis.getOut().writeObject(rm);
->>>>>>> Stashed changes
     }
 
     /**
      * Method which cloase connection with server
      */
     public void close() {
-<<<<<<< Updated upstream
-=======
         try {
             exitLobby();
         } catch (Exception ignored) {
@@ -264,7 +233,6 @@ public class ClientCore {
         if (conlis != null) {
             conlis.close();
         }
->>>>>>> Stashed changes
 
     }
 
@@ -274,13 +242,9 @@ public class ClientCore {
      * @throws Exception throws if an error occurs
      */
     public void sendLobbyListRequest() throws Exception {
-<<<<<<< Updated upstream
-
-=======
         MessageHolder mh = new MessageHolder();
         mh.setMessageType("get lobby info");
         conlis.getOut().writeObject(mh);
->>>>>>> Stashed changes
     }
 
     /**
@@ -289,13 +253,9 @@ public class ClientCore {
      * @throws Exception throws if an error occurs
      */
     public void createLobby() throws Exception {
-<<<<<<< Updated upstream
-
-=======
         MessageHolder mh = new MessageHolder();
         mh.setMessageType("Create Lobby");
         conlis.getOut().writeObject(mh);
->>>>>>> Stashed changes
     }
 
     /**
@@ -306,14 +266,10 @@ public class ClientCore {
      * @throws Exception throws if an error occurs
      */
     public void joinLobby(String hostName) throws Exception {
-<<<<<<< Updated upstream
-
-=======
         JoinLobbyMessage mh = new JoinLobbyMessage();
         mh.setMessageType("join lobby");
         mh.setHostName(hostName);
         conlis.getOut().writeObject(mh);
->>>>>>> Stashed changes
     }
 
     /**
@@ -322,15 +278,11 @@ public class ClientCore {
      * @throws IOException throws if an error occurs
      */
     public void exitLobby() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         JoinLobbyMessage mh = new JoinLobbyMessage();
         mh.setMessageType("exit lobby");
         mh.setHostName(lobbyInfo.getPlayernames().get(0));
         conlis.getOut().writeObject(mh);
         myTurn = false;
->>>>>>> Stashed changes
     }
 
     /**
@@ -357,9 +309,6 @@ public class ClientCore {
      * @param name new name of lobby
      */
     public void changeLobbyName(String name) {
-<<<<<<< Updated upstream
-
-=======
         JoinLobbyMessage message = new JoinLobbyMessage();
         message.setMessageType("change name");
         message.setHostName(name);
@@ -367,7 +316,6 @@ public class ClientCore {
             conlis.getOut().writeObject(message);
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -377,13 +325,9 @@ public class ClientCore {
      * @throws IOException throws if an error occurs
      */
     public void startGame() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         MessageHolder mh = new MessageHolder();
         mh.setMessageType("StartGame");
         conlis.getOut().writeObject(mh);
->>>>>>> Stashed changes
     }
 
     /**
@@ -396,14 +340,10 @@ public class ClientCore {
      * @throws IOException throws if an error occurs
      */
     public void sendMove(int pawnX, int pawnY, int moveX, int moveY) throws IOException {
-<<<<<<< Updated upstream
-
-=======
         MoveMessage mm = new MoveMessage();
         mm.setMessageType("move");
         mm.setAll(pawnX, pawnY, moveX, moveY);
         conlis.getOut().writeObject(mm);
->>>>>>> Stashed changes
     }
 
     /**
@@ -412,16 +352,12 @@ public class ClientCore {
      * @throws IOException throws if an error occurs
      */
     public void skipRound() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         if (myTurn) {
             MessageHolder mh = new MessageHolder();
             mh.setMessageType("skip turn");
             conlis.getOut().writeObject(mh);
             myTurn = false;
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -429,13 +365,6 @@ public class ClientCore {
      * playing
      */
     public void ready() {
-<<<<<<< Updated upstream
-
-    }
-
-    public void getHistory(){
-
-=======
         try {
             MessageHolder mh = new MessageHolder();
             mh.setMessageType("ready");
@@ -450,6 +379,5 @@ public class ClientCore {
             mh.setMessageType("get game history");
             conlis.out.writeObject(mh);
         }catch(Exception ignored){}
->>>>>>> Stashed changes
     }
 }

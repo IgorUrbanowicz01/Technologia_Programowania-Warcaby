@@ -2,9 +2,6 @@ package com.client.controllers;
 
 import java.io.IOException;
 import java.util.LinkedList;
-<<<<<<< Updated upstream
-import com.client.ClientCore;
-=======
 
 import com.client.ClientCore;
 import com.client.helpers.Routes;
@@ -26,20 +23,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
->>>>>>> Stashed changes
 
 /**
  * Class responsible for controlling the layout of the dasboard and the
  * functionality.
  */
 public class DashboardController {
-<<<<<<< Updated upstream
-
-    @FXML
-    public Text NickName;
-    @FXML
-    Button createGameButton, logoutButton;
-=======
     @FXML
     public Text NickName;
     public Text paginationPosition;
@@ -49,15 +38,10 @@ public class DashboardController {
     Button paginationButtonNext;
     Button paginationButtonPrev;
     Button gameHistory;
->>>>>>> Stashed changes
     @FXML
     VBox GamesCardsPane;
     @FXML
     Button refreshButton;
-<<<<<<< Updated upstream
-    // Dummy list
-    public LinkedList<dummyLobbyClass> lobbyLinkedList = new LinkedList<>();
-=======
     @FXML
     ImageView refreshIcon;
     // Dummy list
@@ -65,7 +49,6 @@ public class DashboardController {
 
     // Varible for help which card games we schuld load
     private Integer paginationIndex = 0;
->>>>>>> Stashed changes
 
     /**
      * This method initialize DashboardController by settings nickName and avatar.
@@ -75,8 +58,6 @@ public class DashboardController {
      */
     @FXML
     public void initialize() throws IOException {
-<<<<<<< Updated upstream
-=======
         displayNickName(ClientCore.getInstance().getLogin());
         ClientCore.getInstance().setDashboardController(this);
         try {
@@ -84,7 +65,6 @@ public class DashboardController {
             lobbyList();
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
 
     }
 
@@ -93,16 +73,12 @@ public class DashboardController {
      */
     @FXML
     public void createLooby() {
-<<<<<<< Updated upstream
-
-=======
         try {
             ClientCore.getInstance().createLobby();
             loadLobby();
         } catch (Exception e) {
             e.printStackTrace();
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -110,15 +86,11 @@ public class DashboardController {
      */
     @FXML
     public void refreshAction() {
-<<<<<<< Updated upstream
-
-=======
         try {
             ClientCore.getInstance().sendLobbyListRequest();
             lobbyList();
         } catch (Exception ignored) {
         }
->>>>>>> Stashed changes
     }
 
     /**
@@ -128,9 +100,6 @@ public class DashboardController {
      */
     @FXML
     public void logout() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         Stage stage;
         Parent root;
 
@@ -141,14 +110,10 @@ public class DashboardController {
 
         stage.setScene(scene);
         stage.show();
->>>>>>> Stashed changes
     }
 
     @FXML
     public void gameHistoryAction() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         Stage stage;
         Parent root;
 
@@ -159,7 +124,6 @@ public class DashboardController {
 
         stage.setScene(scene);
         stage.show();
->>>>>>> Stashed changes
     }
 
     /**
@@ -169,12 +133,9 @@ public class DashboardController {
      */
     @FXML
     public void loadNext() throws IOException {
-<<<<<<< Updated upstream
-=======
         GamesCardsPane.getChildren().clear();
         paginationIndex++;
         lobbyList();
->>>>>>> Stashed changes
 
     }
 
@@ -185,13 +146,9 @@ public class DashboardController {
      */
     @FXML
     public void loadPrev() throws IOException {
-<<<<<<< Updated upstream
-
-=======
         GamesCardsPane.getChildren().clear();
         paginationIndex--;
         lobbyList();
->>>>>>> Stashed changes
     }
 
     /**
@@ -199,9 +156,6 @@ public class DashboardController {
      * And sett pagination options
      */
     public void lobbyList() {
-<<<<<<< Updated upstream
-        
-=======
         // Send link list off lobbys init dasboard
         initDashboardGames();
         // Control when pagination button schuld be active
@@ -218,16 +172,12 @@ public class DashboardController {
             paginationButtonNext.setDisable(false);
             paginationButtonPrev.setDisable(false);
         }
->>>>>>> Stashed changes
     }
 
     /**
      * Method which load game list from linkList and create them
      */
     public void initDashboardGames() {
-<<<<<<< Updated upstream
-
-=======
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -242,7 +192,6 @@ public class DashboardController {
                 }
             }
         });
->>>>>>> Stashed changes
     }
 
     /**
@@ -250,14 +199,9 @@ public class DashboardController {
      * 
      * @param newList new created list
      */
-<<<<<<< Updated upstream
-    public void changeLobbyList(final LinkedList<dummyLobbyClass> newList) {
-
-=======
     public void changeLobbyList(final LinkedList<DummyLobby> newList) {
         lobbyLinkedList.clear();
         lobbyLinkedList.addAll(newList);
->>>>>>> Stashed changes
     }
 
     /**
@@ -266,21 +210,8 @@ public class DashboardController {
      * @param nickName users nickName
      */
     public void displayNickName(String nickName) {
-<<<<<<< Updated upstream
-
-    }
-
-    /**
-     * Method which load user avatar and set him on dasboard
-     * 
-     * @param avatarNumber users avatar
-     */
-    public void displayAvatar(Integer avatarNumber) {
-
-=======
         NickName.setTextAlignment(TextAlignment.CENTER);
         NickName.setText(nickName);
->>>>>>> Stashed changes
     }
 
     /**
@@ -289,17 +220,11 @@ public class DashboardController {
      * @param gameName       the name of game which is visible on game card
      * @param playersInLobby information about players in the lobby
      * @param hostName       show who is hosting the game
-<<<<<<< Updated upstream
-     * @return gameCardHBox  new game cards list
-=======
      * @return gameCardHBox new game cards list
->>>>>>> Stashed changes
      */
     // Create new card gamer
     public Pane gameCardCreator(String gameName, Integer playersInLobby, String hostName) {
 
-<<<<<<< Updated upstream
-=======
         HBox gameCardHBox = new HBox();
         gameCardHBox.setId("gameCardHBox");
 
@@ -324,17 +249,12 @@ public class DashboardController {
         gameCardHBox.setAlignment(Pos.CENTER);
 
         return gameCardHBox;
->>>>>>> Stashed changes
     }
 
     /**
      * Method which load new lobby scene and send information about it to the server
      */
     public void loadLobby() {
-<<<<<<< Updated upstream
-
-    }
-=======
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -354,6 +274,5 @@ public class DashboardController {
 
     }
 
->>>>>>> Stashed changes
 }
 
