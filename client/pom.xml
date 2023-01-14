@@ -8,14 +8,63 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>1.0-SNAPSHOT</version>
 <packaging>jar</packaging>
 <name>com.client.java</name>
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>5.8.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+
 <dependencies>
 <dependency>
-<groupId>junit</groupId>
-<artifactId>junit</artifactId>
-<version>4.9</version>
-<scope>test</scope>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-controls</artifactId>
+  <version>17</version>
+</dependency>
+<dependency>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-fxml</artifactId>
+  <version>17.0.2-ea+2</version>
+</dependency>
+<dependency>
+  <groupId>org.mockito</groupId>
+  <artifactId>mockito-core</artifactId>
+  <version>4.2.0</version>
+</dependency>
+<dependency>
+    <groupId>com.jfoenix</groupId>
+    <artifactId>jfoenix</artifactId>
+    <version>9.0.10</version>
+</dependency>
+<dependency>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter</artifactId>
+  <scope>test</scope>
+</dependency>
+<dependency>
+  <groupId>org.testfx</groupId>
+  <artifactId>testfx-junit5</artifactId>
+  <version>4.0.16-alpha</version>
+  <scope>test</scope>
+</dependency> 
+
+<dependency>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-media</artifactId>
+  <version>18-ea+9</version>
 </dependency>
 </dependencies>
+
 <properties>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 <maven.compiler.source>17</maven.compiler.source>
