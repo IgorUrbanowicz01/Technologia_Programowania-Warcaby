@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.client.controllers.LobbyController">
+   <children>
+      <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="1011.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Technologie-Programowania/Lista4/WarcabyGame-main/client/src/main/java/com/client/img/Rectangle.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="NickName" layoutX="1011.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nick Name" textOrigin="CENTER" wrappingWidth="175.0" />
+      <Pane fx:id="Host" layoutX="353.0" layoutY="121.0" prefHeight="87.0" prefWidth="496.0">
+         <children>
+            <Text fx:id="HostName" layoutX="139.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NickName" />
+         </children>
+      </Pane>
+      <Pane fx:id="Player1" layoutX="353.0" layoutY="216.0" prefHeight="87.0" prefWidth="496.0">
+         <children>
+            <Text fx:id="Player1Nick" layoutX="139.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NickName" />
+         </children>
+      </Pane>
+      <Pane fx:id="Player2" layoutX="353.0" layoutY="312.0" prefHeight="87.0" prefWidth="496.0" />
+      <Pane fx:id="Player3" layoutX="353.0" layoutY="406.0" prefHeight="87.0" prefWidth="496.0" />
+      <Pane fx:id="Player4" layoutX="353.0" layoutY="499.0" prefHeight="87.0" prefWidth="496.0" />
+      <Button fx:id="startGame" layoutX="536.0" layoutY="715.0" mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="129.0" text="Start Game">
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Technologie-Programowania/Lista4/WarcabyGame-main/client/src/main/java/com/client/img/PlayWhite.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="saveEditButton" layoutX="738.0" layoutY="33.0" mnemonicParsing="false" onAction="#saveEdit" text="Edit" />
+      <TextField fx:id="gameName" layoutX="503.0" layoutY="30.0" prefHeight="25.0" prefWidth="203.0" />
+      <Button fx:id="goOut" layoutX="1053.0" layoutY="205.0" mnemonicParsing="false" onAction="#goOut" text="Go Out" />
+      <Pane fx:id="Player5" layoutX="353.0" layoutY="591.0" prefHeight="87.0" prefWidth="496.0" />
+   </children>
+</Pane>
