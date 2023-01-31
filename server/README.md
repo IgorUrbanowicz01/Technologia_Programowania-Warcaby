@@ -1,2 +1,3 @@
 # WarcabyGame
- My and Vipo game
+
+Igor Urbanowicz, Piotr Zapała
