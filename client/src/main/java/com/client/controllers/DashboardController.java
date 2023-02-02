@@ -34,10 +34,9 @@ public class DashboardController {
     public Text paginationPosition;
     @FXML
     Button createGameButton;
-    Button logoutButtin;
+    Button logoutButton;
     Button paginationButtonNext;
     Button paginationButtonPrev;
-    Button gameHistory;
     @FXML
     VBox GamesCardsPane;
     @FXML
@@ -103,23 +102,9 @@ public class DashboardController {
         Stage stage;
         Parent root;
 
-        stage = (Stage) logoutButtin.getScene().getWindow();
+        stage = (Stage) logoutButton.getScene().getWindow();
         root = FXMLLoader.load(Routes.viewsRoute("loginIntoLauncher.fxml"));
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(Routes.styleRoute("app.css"));
-
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void gameHistoryAction() throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) logoutButtin.getScene().getWindow();
-        root = FXMLLoader.load(Routes.viewsRoute("GamesHistory.fxml"));
-        Scene scene = new Scene(root, 1200, 800);
         scene.getStylesheets().add(Routes.styleRoute("app.css"));
 
         stage.setScene(scene);
@@ -205,7 +190,7 @@ public class DashboardController {
     }
 
     /**
-     * Method which set players login in dasboard
+     * Method which set players login in dashboard
      * 
      * @param nickName users nickName
      */
@@ -275,4 +260,3 @@ public class DashboardController {
     }
 
 }
-

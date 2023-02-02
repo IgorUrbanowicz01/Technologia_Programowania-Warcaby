@@ -1,4 +1,4 @@
-package com.Database;
+package com.database;
 
 import java.io.Serializable;
 
@@ -8,19 +8,16 @@ import java.io.Serializable;
 public class UserInformationPackage implements Serializable {
     private String login;
     private String password;
-    private int avatarNbr;
 
     /**
      * creates information
      * 
      * @param login    users login
      * @param password users password
-     * @param avatar   users avatar
      */
-    public UserInformationPackage(String login, String password, int avatar) {
+    public UserInformationPackage(String login, String password) {
         this.login = login;
         this.password = password;
-        this.avatarNbr = avatar;
     }
 
     /**
@@ -58,23 +55,4 @@ public class UserInformationPackage implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    /**
-     * returns avatar
-     * 
-     * @return avatar number
-     */
-    public int getAvatarNbr() {
-        return avatarNbr;
-    }
-
-    /**
-     * sets avatar
-     * 
-     * @param avatarNbr avatar number
-     */
-    public void setAvatarNbr(int avatarNbr) {
-        this.avatarNbr = avatarNbr;
-    }
-
 }

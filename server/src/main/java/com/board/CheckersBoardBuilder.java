@@ -1,7 +1,5 @@
 package com.board;
 
-import javax.print.attribute.Size2DSyntax;
-
 /**
  * checkers board builder
  */
@@ -16,8 +14,9 @@ public class CheckersBoardBuilder {
      * @param numberOfPlayers number of players
      * @return this builder
      */
-    public void setType(GameType gameType) {
+    public CheckersBoardBuilder setType(GameType gameType) {
         this.gameType = gameType;
+        return this;
     }
 
     /**
@@ -28,8 +27,9 @@ public class CheckersBoardBuilder {
      */
     public CheckersBoard build() throws Exception {
         size = gameType.getSize();
-        if (size < 1 || numberOfPlayers < 0 || numberOfPlayers == 1 || numberOfPlayers > 2)
-            throw new Exception("wrong build parameters");
+        if (size < 1 || numberOfPlayers < 0 || numberOfPlayers == 1 || numberOfPlayers > 2) {
+            throw new Exception("wrong build parameters");          
+        }
         CheckersBoard checkersBoard = new CheckersBoard();
         Pawn[][] board = new Pawn[size][size];
         // czyszczenie tabeli (wszystkie pola na 0)

@@ -1,14 +1,13 @@
 package com.server;
 
-import com.Database.UserDataBase;
-import com.Database.UserInformationPackage;
-
 import java.io.IOException;
+
+import com.database.UserDataBase;
+import com.database.UserInformationPackage;
 
 /**
  * class that manages the player database
  */
-
 
 public class DataBaseManager {
     public UserDataBase dataBase;
@@ -38,10 +37,9 @@ public class DataBaseManager {
      * 
      * @param login    users login
      * @param password users password
-     * @param avatar   users avatar
      */
-    public void addUser(String login, String password, int avatar) {
-        dataBase.addUser(new UserInformationPackage(login, password, avatar));
+    public void addUser(String login, String password) {
+        dataBase.addUser(new UserInformationPackage(login, password));
     }
 
     /**
@@ -73,15 +71,4 @@ public class DataBaseManager {
     public void updatePassword(String login, String newPassword) {
         dataBase.updatePassword(login, newPassword);
     }
-
-    /**
-     * changes users avatar
-     * 
-     * @param login     users login
-     * @param newAvatar users new avatar
-     */
-    public void changeAvatar(String login, int newAvatar) {
-        dataBase.changeAvatar(login, newAvatar);
-    }
-
 }

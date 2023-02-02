@@ -1,7 +1,8 @@
 package com.messages;
 
 public class LoginMessage extends MessageHolder{
-    private String login, password;
+    private String login;
+    private String password;
 
     public String getLogin() {
         return login;

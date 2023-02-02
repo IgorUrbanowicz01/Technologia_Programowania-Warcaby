@@ -44,12 +44,12 @@ public class CheckersBoard {
      * @throws Exception throws if move isn't valid
      */
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception {
-        Pawn[][] LogicBoard = gameType.setVaildmovesP(pawnY, pawnX, board);
-        List<Integer> kils = LogicBoard[moveY][moveX].getKills();
-        if (LogicBoard[moveY][moveX].getPlayer() != 0) {
+        Pawn[][] logicBoard = gameType.setVaildmovesP(pawnY, pawnX, board);
+        List<Integer> kils = logicBoard[moveY][moveX].getKills();
+        if (logicBoard[moveY][moveX].getPlayer() != 0) {
             board[moveY][moveX].setPlayer(board[pawnY][pawnX].getPlayer());
             board[pawnY][pawnX].setPlayer(0);
-            for (int i = 0; i < LogicBoard[moveY][moveX].getKillsSize(); i += 2) {
+            for (int i = 0; i < logicBoard[moveY][moveX].getKillsSize(); i += 2) {
                 board[kils.get(i)][kils.get(i + 1)].setPlayer(0);
             }
 
@@ -89,10 +89,12 @@ public class CheckersBoard {
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                if (board[i][j].getPlayer() == 1)
+                if (board[i][j].getPlayer() == 1) {
                     checksP2 = false;
-                if (board[i][j].getPlayer() == 2)
+                }
+                if (board[i][j].getPlayer() == 2) {
                     checksP1 = false;
+                }
             }
         }
         return new boolean[] { checksP1, checksP2 };

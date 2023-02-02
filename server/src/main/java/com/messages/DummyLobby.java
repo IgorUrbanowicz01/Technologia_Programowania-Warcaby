@@ -2,11 +2,12 @@ package com.messages;
 
 import java.io.Serializable;
 
-public class dummyLobbyClass implements Serializable {
-    public String gameName, hostName;
+public class DummyLobby implements Serializable {
+    public String gameName;
+    public String hostName;
     public Integer playersInLobby;
 
-    public dummyLobbyClass(String gameName, Integer playersInLobby, String hostName) {
+    public DummyLobby(String gameName, Integer playersInLobby, String hostName) {
         this.gameName = gameName;
         this.playersInLobby = playersInLobby;
         this.hostName = hostName;

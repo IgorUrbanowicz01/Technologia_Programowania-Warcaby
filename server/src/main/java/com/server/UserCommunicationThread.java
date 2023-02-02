@@ -1,5 +1,6 @@
 package com.server;
 
+import com.database.UserInformationPackage;
 import com.messages.*;
 
 import java.io.*;
@@ -14,6 +15,7 @@ public class UserCommunicationThread extends Thread {
     public ObjectOutputStream out;
     Socket clientSocket;
     MessageHolder message;
+    public UserInformationPackage userData;
     public Lobby myLobby = null;
 
     /**
@@ -120,32 +122,37 @@ public class UserCommunicationThread extends Thread {
     }
 
     private void joinLobby(MessageHolder message) {
-        joinLobbyMessage jlm = (joinLobbyMessage) message;
+        JoinLobbyMessage jlm = (JoinLobbyMessage) message;
         Lobby lobby = ServerCore.getInstance().getLobbybyHost(jlm.getHostName());
-        if (lobby != null)
+        if (lobby != null) {
             lobby.addPlayer(this);
+        }
     }
 
     private void exitLobby() {
-        if (myLobby != null)
+        if (myLobby != null) {
             myLobby.removePlayer(this);
+        }
         myLobby = null;
     }
 
     public void changeLobbyName(MessageHolder message) {
-        joinLobbyMessage jm = (joinLobbyMessage) message;
-        if (myLobby != null)
+        JoinLobbyMessage jm = (JoinLobbyMessage) message;
+        if (myLobby != null) {
             myLobby.setName(jm.getHostName());
+        }
     }
 
     private void startGame() {
-        if (myLobby != null)
+        if (myLobby != null) {
             myLobby.start();
+        }
     }
 
     private void move(MessageHolder message) {
         MoveMessage mm = (MoveMessage) message;
-        if (myLobby != null)
+        if (myLobby != null) {
             myLobby.game.move(mm.getPawnX(), mm.getPawnY(), mm.getMoveX(), mm.getMoveY());
+        }
     }
 }

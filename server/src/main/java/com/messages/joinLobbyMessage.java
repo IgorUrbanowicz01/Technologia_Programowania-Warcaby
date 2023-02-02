@@ -1,6 +1,6 @@
 package com.messages;
 
-public class joinLobbyMessage extends MessageHolder {
+public class JoinLobbyMessage extends MessageHolder {
     String hostName;
 
     public String getHostName() {

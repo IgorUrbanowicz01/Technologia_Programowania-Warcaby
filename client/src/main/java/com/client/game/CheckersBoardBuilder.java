@@ -1,22 +1,22 @@
 package com.client.game;
 
+
 /**
  * checkers board builder
  */
 public class CheckersBoardBuilder {
     int size;
     int numberOfPlayers;
-    int height;
-    int width;
+    GameType gameType;
 
     /**
-     * sets the board size
+     * sets the number of players
      * 
-     * @param size size
+     * @param numberOfPlayers number of players
      * @return this builder
      */
-    public CheckersBoardBuilder setSize(int size) {
-        this.size = size;
+    public CheckersBoardBuilder setType(GameType gameType) {
+        this.gameType = gameType;
         return this;
     }
 
@@ -24,44 +24,33 @@ public class CheckersBoardBuilder {
      * builds the board
      * 
      * @return built board
-     * @throws Exception throws if size or number of players if wrongly set
+     * @throws Exception throws if size or number of players if wrongly10 set
      */
     public CheckersBoard build() throws Exception {
+        size = gameType.getSize();
+        if (size < 1 || numberOfPlayers < 0 || numberOfPlayers == 1 || numberOfPlayers > 2) {
+            throw new Exception("wrong build parameters");          
+        }
         CheckersBoard checkersBoard = new CheckersBoard();
-        height = size + 3 * (size - 1); // dla size = 5 wynosi 17
-        width = 2 * (size + 2 * (size - 1)) - 1; // dla size = 5 wynosi 25
-        int[][] board = new int[height][width];
-        // czyszczenie tabeli (wszystkie pola na -1)
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                board[i][j] = -1;
+        Pawn[][] board = new Pawn[size][size];
+        // czyszczenie tabeli (wszystkie pola na 0)
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = new Pawn(0);
             }
         }
-        // tworzenie planszy (zaznaczanie kształtu na 0)
-        setLegal(board);
-        checkersBoard.setBoard(board, size);
+        board = gameType.setPlayers(board);
+        checkersBoard.setBoard(board, gameType);
         return checkersBoard;
     }
 
-    /**
-     * @param board
-     */
-    private void setLegal(int[][] board) {
-        int goodPoint = width / 2;
-        for (int i = 1; i < size; i++) {
-            for (int j = 0; j < i; j++) {
-                board[i - 1][goodPoint + 2 * j] = 0;
-                board[height - i][goodPoint + 2 * j] = 0;
+    public Pawn[][] buildEmpty(int sizeOf) {
+        Pawn[][] board = new Pawn[sizeOf][sizeOf];
+        for (int i = 0; i < sizeOf; i++) {
+            for (int j = 0; j < sizeOf; j++) {
+                board[i][j] = new Pawn(0);
             }
-            goodPoint = goodPoint - 1;
         }
-        goodPoint = 0;
-        for (int i = size; i < 2 * size; i++) {
-            for (int j = 0; j < width - 2 * (i - size); j += 2) {
-                board[i - 1][goodPoint + j] = 0;
-                board[height - i][goodPoint + j] = 0;
-            }
-            goodPoint = goodPoint + 1;
-        }
+        return board;
     }
 }

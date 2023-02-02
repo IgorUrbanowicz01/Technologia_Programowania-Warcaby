@@ -20,10 +20,10 @@ public class CheckersBoardAdapter {
     }
 
     public void setFields() {
-        int[][] board = checkersBoard.getBoard();
+        Pawn[][] board = checkersBoard.getBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
-                switch (board[x][y]) {
+                switch (board[x][y].getPlayer()) {
                     case -1 -> fields[x][y] = null;
                     case 0 -> fields[x][y] = new Field(2 * radious * y + 15, 3 * radious * x + 15, 1.5 * radious,
                             Color.WHITE, x, y);
@@ -37,8 +37,8 @@ public class CheckersBoardAdapter {
                 fields[x][y].setStrokeWidth(2);
                 fields[x][y].setOnMouseMoved(mouseEvent -> {
                     Field field = (Field) mouseEvent.getSource();
-                    CheckersBoard logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
-                    for (int i = 0; i < logic.getBoard().length; i++) {
+                    Pawn[][] logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
+                    for (int i = 0; i < logic.length; i++) {
                         for (int j = 0; j < logic.getBoard()[0].length; j++) {
                             if (logic.getBoard()[i][j] == 1) {
                                 fields[i][j].setStroke(Color.DARKBLUE);
@@ -62,10 +62,10 @@ public class CheckersBoardAdapter {
 
     public void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception {
         checkersBoard.move(pawnX, pawnY, moveX, moveY);
-        int[][] board = checkersBoard.getBoard();
+        Pawn[][] board = checkersBoard.getBoard();
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
-                switch (board[x][y]) {
+                switch (board[x][y].getPlayer()) {
                     case -1 -> fields[x][y] = null;
                     case 0 -> fields[x][y].setFill(Color.WHITE);
                     case 1 -> fields[x][y].setFill(Color.BLACK);

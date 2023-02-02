@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import com.controllers.TerminalController;
-import com.messages.dummyLobbyClass;
+import com.messages.DummyLobby;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
@@ -17,7 +17,7 @@ import javax.transaction.Transactional;
  * class being the core of the server.
  * this class is a singleton
  */
-public class ServerCore {
+public final class ServerCore {
     private static volatile ServerCore instance;
     private TerminalController terminalController;
     public ServerSocket serverSocket;
@@ -76,8 +76,9 @@ public class ServerCore {
 
     public void command(String command) {
         String[] splitCommand = command.split(" ");
-        if (splitCommand.length == 0)
+        if (splitCommand.length == 0) {
             return;
+        }
         switch (splitCommand[0]) {
             case "echo" -> terminalController.append(command.substring(4));
             case "start" -> {
@@ -103,8 +104,9 @@ public class ServerCore {
      */
     private void startServer(int portNumber) {
         try {
-            if (isRunning)
+            if (isRunning) {
                 return;
+            }
             isRunning = true;
             serverSocket = new ServerSocket(portNumber);
             terminalController.append("started server at port " + portNumber);
@@ -125,18 +127,20 @@ public class ServerCore {
                 isRunning = false;
                 return;
             }
-            for (UserCommunicationThread UCT : userConnections) {
+            for (UserCommunicationThread utc : userConnections) {
 
-                UCT.close();
+                utc.close();
             }
             serverSocket.close();
-            if (write)
+            if (write) {
                 terminalController.append("server closed");
+            }
             isRunning = false;
         } catch (Exception e) {
             e.printStackTrace();
-            if (write)
+            if (write) {
                 terminalController.append("failed to close server");
+            }
         }
     }
 
@@ -172,11 +176,11 @@ public class ServerCore {
      * 
      * @return
      */
-    public LinkedList<dummyLobbyClass> getLobbysInfo() {
-        LinkedList<dummyLobbyClass> info = new LinkedList<>();
+    public LinkedList<DummyLobby> getLobbysInfo() {
+        LinkedList<DummyLobby> info = new LinkedList<>();
         for (int i = 0; i < serverLobbys.size(); i++) {
             Lobby lobby = serverLobbys.get(i);
-            info.add(i, new dummyLobbyClass(lobby.getName(), lobby.getNumberOfPlayers(), lobby.getHost()));
+            info.add(i, new DummyLobby(lobby.getName(), lobby.getNumberOfPlayers(), lobby.getHost()));
         }
         return info;
     }

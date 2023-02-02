@@ -3,13 +3,13 @@ package com.messages;
 import java.util.LinkedList;
 
 public class LobbyListMessage extends MessageHolder {
-    private LinkedList<dummyLobbyClass> lobbys = new LinkedList<>();
+    private LinkedList<DummyLobby> lobbys = new LinkedList<>();
 
-    public LinkedList<dummyLobbyClass> getLobbys() {
+    public LinkedList<DummyLobby> getLobbys() {
         return lobbys;
     }
 
-    public void setLobbys(LinkedList<dummyLobbyClass> lobbys) {
+    public void setLobbys(LinkedList<DummyLobby> lobbys) {
         this.lobbys = lobbys;
     }
 }

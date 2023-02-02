@@ -40,19 +40,20 @@ public class CheckersBoardAdapter {
                     case 6 -> fields[x][y] = new Field(2 * radious * y + 15, 3 * radious * x + 15, 1.5 * radious,
                             Color.PURPLE, x, y);
                 }
-                if (fields[x][y] == null)
+                if (fields[x][y] == null) {
                     continue;
+                }
                 fields[x][y].setStroke(Color.BLACK);
                 fields[x][y].setStrokeWidth(2);
                 fields[x][y].setOnMouseMoved(mouseEvent -> {
                     Field field = (Field) mouseEvent.getSource();
-                    Pawn[][] Logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
-                    for (int i = 0; i < Logic.length; i++) {
-                        for (int j = 0; j < Logic[0].length; j++) {
-                            if (Logic[i][j].getPlayer() == 1) {
+                    Pawn[][] logic = checkersBoard.setValidMoves(field.getHeight(), field.getWidth());
+                    for (int i = 0; i < logic.length; i++) {
+                        for (int j = 0; j < logic[0].length; j++) {
+                            if (logic[i][j].getPlayer() == 1) {
                                 fields[i][j].setStroke(Color.DARKBLUE);
                                 fields[i][j].setStrokeWidth(5);
-                            } else if (Logic[i][j].getPlayer() == 0) {
+                            } else if (logic[i][j].getPlayer() == 0) {
                                 fields[i][j].setStroke(Color.BLACK);
                                 fields[i][j].setStrokeWidth(2);
 

@@ -1,7 +1,10 @@
 package com.messages;
 
 public class MoveMessage extends MessageHolder{
-    int pawnX, pawnY, moveX, moveY;
+    int pawnX;
+    int pawnY;
+    int moveX;
+    int moveY;
 
     public void setAll(int pawnX, int pawnY, int moveX, int moveY){
         this.pawnX = pawnX;

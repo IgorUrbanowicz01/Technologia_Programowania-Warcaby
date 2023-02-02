@@ -18,7 +18,7 @@ public class ServerCoreTest {
         assertNotNull(s1);
     }
 
-    private static class dummyControler extends TerminalController {
+    private static class DummyController extends TerminalController {
         public String append;
 
         @Override
@@ -29,15 +29,15 @@ public class ServerCoreTest {
 
     @Test
     public void commandTest() {
-        ServerCore.getInstance().setController(new dummyControler());
+        ServerCore.getInstance().setController(new DummyController());
         ServerCore.getInstance().command("echo test1234");
-        assertEquals(" test1234", ((dummyControler) ServerCore.getInstance().getController()).append);
+        assertEquals(" test1234", ((DummyController) ServerCore.getInstance().getController()).append);
     }
 
-    private static class dummySocket extends ServerSocket {
+    private static class DummySocket extends ServerSocket {
         public boolean amIactive = true;
 
-        public dummySocket() throws IOException {
+        public DummySocket() throws IOException {
         }
 
         @Override
@@ -48,9 +48,9 @@ public class ServerCoreTest {
 
     @Test
     public void closeTest() throws IOException {
-        dummyControler dc = new dummyControler();
+        DummyController dc = new DummyController();
         ServerCore.getInstance().setController(dc);
-        dummySocket ds = new dummySocket();
+        DummySocket ds = new DummySocket();
         ServerCore.getInstance().serverSocket = ds;
         ServerCore.getInstance().close(true);
         assertEquals(dc.append, "server closed");
@@ -60,7 +60,7 @@ public class ServerCoreTest {
 
     @Test
     public void startTest() {
-        dummyControler dc = new dummyControler();
+        DummyController dc = new DummyController();
         ServerCore.getInstance().setController(dc);
         ServerCore.getInstance().command("start 4444");
         assertEquals(dc.append, "started server at port 4444");

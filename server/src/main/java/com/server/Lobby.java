@@ -11,7 +11,8 @@ import com.board.PolishCheckers;
  * lobby
  */
 public class Lobby {
-    private String host, name;
+    private String host;
+    private String name;
     private int numberOfPlayers;
     private final LinkedList<UserCommunicationThread> players;
     public Game game;
@@ -32,8 +33,9 @@ public class Lobby {
      * @param newPlayer player to add
      */
     public void addPlayer(UserCommunicationThread newPlayer) {
-        if (numberOfPlayers == 2)
+        if (numberOfPlayers == 2) {
             return;
+        }
         if (numberOfPlayers == 0) {
             host = newPlayer.userData.getLogin();
             name = host + "'s game";
@@ -50,8 +52,9 @@ public class Lobby {
      * @param playerToRemove player to remove
      */
     public void removePlayer(UserCommunicationThread playerToRemove) {
-        if (!players.remove(playerToRemove))
+        if (!players.remove(playerToRemove)) {
             return;
+        }
         numberOfPlayers--;
         if (numberOfPlayers == 0) {
             ServerCore.getInstance().getLobbys().remove(this);
@@ -137,7 +140,7 @@ public class Lobby {
             switch (type) {
                 case "Polish" -> gameType = new PolishCheckers();
             }
-        } catch (Exception ignoreException) {
+        } catch (Exception ignored) {
         }
     }
 

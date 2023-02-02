@@ -1,4 +1,4 @@
-package com.Database;
+package com.database;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -81,7 +81,6 @@ public class UserDataBase implements Serializable {
             JSONObject userInfo = new JSONObject();
             userInfo.put("Login", uip.getLogin());
             userInfo.put("Password", uip.getPassword());
-            userInfo.put("Avatar", uip.getAvatarNbr());
             JSONArray userLogin = new JSONArray();
             userLogin.put(userInfo);
 
@@ -100,33 +99,18 @@ public class UserDataBase implements Serializable {
     public void load() {
         try {
             String contents = new String((Files.readAllBytes(Path.of(Routes.databaseRoute("Users.json").toURI()))));
-            JSONObject JSONfilObject = new JSONObject(contents);
-            JSONArray usersJsonArray = JSONfilObject.getJSONArray("Users");
+            JSONObject jsonFilObject = new JSONObject(contents);
+            JSONArray usersJsonArray = jsonFilObject.getJSONArray("Users");
 
             for (int i = 0; i < usersJsonArray.length(); i++) {
                 JSONObject user = usersJsonArray.getJSONObject(i);
-                users.add(new UserInformationPackage((String) user.get("Login"), (String) user.get("Password"),
-                        (Integer) user.get("Avatar")));
+                users.add(new UserInformationPackage((String) user.get("Login"), (String) user.get("Password")));
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-    /**
-     * changes users avatar
-     * 
-     * @param login     users login
-     * @param newAvatar users new avatar
-     */
-    public void changeAvatar(String login, int newAvatar) {
-        for (UserInformationPackage uip : users) {
-            if (uip.getLogin().equals(login)) {
-                uip.setAvatarNbr(newAvatar);
-            }
-        }
     }
 
     /**

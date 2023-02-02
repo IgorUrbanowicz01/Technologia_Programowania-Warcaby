@@ -11,22 +11,19 @@ import static org.junit.Assert.assertTrue;
 
 public class MessagesTest {
     @Test
-    public void RegisterMessageTest(){
+    public void registerMessageTest(){
         RegisterMessage rm = new RegisterMessage();
         String login = "testLogin";
         String password = "testPassword";
-        int ava = 1;
-        rm.setAvatar(ava);
         rm.setMessageType("Test");
         rm.setLogin(login);
         rm.setPassword(password);
         Assertions.assertEquals(login, rm.getLogin());
         Assertions.assertEquals(password, rm.getPassword());
-        Assertions.assertEquals(ava, rm.getAvatar());
         Assertions.assertEquals("Test", rm.getMessageType());
     }
     @Test
-    public void MoveMessageTest(){
+    public void moveMessageTest(){
         MoveMessage mm = new MoveMessage();
         mm.setMessageType("Test");
         int pawnX = 1;
@@ -72,8 +69,8 @@ public class MessagesTest {
         LobbyListMessage m = new LobbyListMessage();
         String type = "Test";
         m.setMessageType(type);
-        LinkedList<dummyLobbyClass> list = new LinkedList<>();
-        list.add(new dummyLobbyClass("tName", 2, "tHost"));
+        LinkedList<DummyLobby> list = new LinkedList<>();
+        list.add(new DummyLobby("tName", 2, "tHost"));
         m.setLobbys(list);
         Assertions.assertEquals(m.getMessageType(), type);
         Assertions.assertEquals("tName", m.getLobbys().getFirst().getName());
@@ -88,24 +85,19 @@ public class MessagesTest {
         m.setMessageType(type);
         m.setGameName(name);
         String name0 = "Test0";
-        Integer ava0 = 0;
         String name1 = "Test1";
-        Integer ava1 = 1;
 
         m.getPlayernames().add(name0);
         m.getPlayernames().add(name1);
-        m.getPlayerimages().add(ava0);
-        m.getPlayerimages().add(ava1);
 
         Assertions.assertEquals(type, m.getMessageType());
         Assertions.assertEquals(name, m.getGameName());
-        Assertions.assertEquals(ava1, m.getPlayerimages().get(1));
         Assertions.assertEquals(name1, m.getPlayernames().get(1));
 
     }
     @Test
     public void joinLobbyMessageTest(){
-        joinLobbyMessage m = new joinLobbyMessage();
+        JoinLobbyMessage m = new JoinLobbyMessage();
         String type = "Test";
         String host = "testHost";
         m.setMessageType(type);
@@ -115,7 +107,7 @@ public class MessagesTest {
     }
     @Test
     public void gameBeginningMessageTest(){
-        gameBeginningMessage m = new gameBeginningMessage();
+        GameBeginningMessage m = new GameBeginningMessage();
         String type = "Test";
         int count = 8;
         int number = 3;

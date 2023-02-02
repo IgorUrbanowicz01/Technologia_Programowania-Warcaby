@@ -55,7 +55,7 @@ public class Game {
      * informs current player that its his move
      */
     public void turn() {
-        joinLobbyMessage jlm = new joinLobbyMessage();
+        JoinLobbyMessage jlm = new JoinLobbyMessage();
         jlm.setMessageType("turn");
         jlm.setHostName(lobby.getPlayers().get(currentPlayer).userData.getLogin());
         lobby.deliverMessages(jlm);
@@ -81,8 +81,9 @@ public class Game {
             boolean gameEnd = true;
             for (int i = 0; i < 2; i++) {
                 won[i] = end[playerNumbers[i] - 1];
-                if (!won[i])
+                if (!won[i]) {
                     gameEnd = false;
+                }
             }
             if (gameEnd) {
                 endGame();
@@ -101,7 +102,7 @@ public class Game {
      * ends game
      */
     public void endGame() {
-        ServerCore.getInstance().saveGame(history);
+        //ServerCore.getInstance().saveGame(history);
         lobby.sendLobbyInfo();
     }
 

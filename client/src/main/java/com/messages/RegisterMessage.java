@@ -1,8 +1,8 @@
 package com.messages;
 
-public class RegisterMessage extends MessageHolder{
-    String login, password;
-    int avatar;
+public class RegisterMessage extends MessageHolder {
+    String login;
+    String password;
 
     public String getLogin() {
         return login;
@@ -19,5 +19,4 @@ public class RegisterMessage extends MessageHolder{
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

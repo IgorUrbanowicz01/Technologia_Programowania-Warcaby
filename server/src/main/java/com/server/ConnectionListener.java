@@ -22,9 +22,9 @@ public class ConnectionListener extends Thread {
         while (true) {
             try {
                 Socket client = server.accept();
-                UserCommunicationThread UCF = new UserCommunicationThread(client);
-                ServerCore.getInstance().getUsers().add(UCF);
-                UCF.start();
+                UserCommunicationThread ucf = new UserCommunicationThread(client);
+                ServerCore.getInstance().getUsers().add(ucf);
+                ucf.start();
             } catch (IOException exception) {
                 ServerCore.getInstance().getController().append("Server accept failed");
                 break;

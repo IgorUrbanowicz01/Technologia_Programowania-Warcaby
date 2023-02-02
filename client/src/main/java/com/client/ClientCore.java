@@ -3,10 +3,8 @@ package com.client;
 import com.client.controllers.*;
 import com.messages.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.Socket;
-import java.util.List;
 
 /**
  * class being the core of the client.
@@ -371,13 +369,5 @@ public class ClientCore {
             conlis.getOut().writeObject(mh);
         } catch (IOException ignored) {
         }
-    }
-
-    public void getHistory(){
-        try{
-            MessageHolder mh = new MessageHolder();
-            mh.setMessageType("get game history");
-            conlis.out.writeObject(mh);
-        }catch(Exception ignored){}
     }
 }

@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.lab1.ControllerTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.224 s <<< FAILURE! - in com.lab1.ControllerTest
-appendTest  Time elapsed: 3.182 s  <<< ERROR!
-java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.reflect.InvocationTargetException
-	at com.lab1.ControllerTest.onStart(ControllerTest.java:30)
-

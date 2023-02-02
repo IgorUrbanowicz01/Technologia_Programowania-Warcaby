@@ -27,13 +27,13 @@ public class StartViewController implements Initializable {
 
     @FXML
     public Button connectServerButton;
-    public Button  errorButton;
+    public Button errorButton;
     @FXML
     public TextField IP; 
     public TextField PORT;
 
     @FXML
-    private Pane ErrorPane;
+    private Pane errorPane;
 
     /**
      * Method for initialize controller and send it to server
@@ -52,7 +52,7 @@ public class StartViewController implements Initializable {
      * @param event users event
      */
     @FXML
-    private void startViewControllerButtons(ActionEvent event) {
+    public void startViewControllerButtons(ActionEvent event) {
         try {
             ClientCore.getInstance().reqServerConnection(IP.getText(), PORT.getText());
             loadNewScene();
@@ -67,9 +67,9 @@ public class StartViewController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorButton(ActionEvent e) {
+    public void errorButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
-        transition.setNode(ErrorPane);
+        transition.setNode(errorPane);
         transition.setToX(0);
         transition.play();
     }
@@ -79,7 +79,7 @@ public class StartViewController implements Initializable {
      */
     public void showError() {
         TranslateTransition transition = new TranslateTransition();
-        transition.setNode(ErrorPane);
+        transition.setNode(errorPane);
         transition.setToX(-285);
         transition.play();
     }
@@ -111,5 +111,4 @@ public class StartViewController implements Initializable {
     public String getIP() {
         return this.IP.getText();
     }
-
 }

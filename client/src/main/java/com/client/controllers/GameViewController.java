@@ -10,12 +10,10 @@ import com.client.game.CheckersBoardBuilder;
 
 import com.client.game.MouseMoveHandler;
 import com.client.helpers.Routes;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -26,7 +24,6 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  * Class responsible for controlling the layout of the game and the
@@ -115,8 +112,7 @@ public class GameViewController {
      */
     public Group gameBoardLoader() {
         try {
-            CheckersBoard board = new CheckersBoardBuilder().setSize(5).setNumberOfPlayers(playerCount)
-                    .build();
+            CheckersBoard board = new CheckersBoardBuilder().setSize(5).setNumberOfPlayers(playerCount).build();
             CheckersBoardAdapter boardAdapter = new CheckersBoardAdapter(board);
             mmh = boardAdapter.getMouseMoveHandler();
 
@@ -124,8 +120,9 @@ public class GameViewController {
 
             for (com.client.game.Field[] a : fields) {
                 for (com.client.game.Field c : a) {
-                    if (c != null)
+                    if (c != null) {
                         group.getChildren().add(c);
+                    }
                 }
             }
         } catch (Exception ignored) {
@@ -142,10 +139,5 @@ public class GameViewController {
 
     private void setUsers() {
         
-    }
-
-    private Paint setColor(int playerNumber) {
-        return null;
-
     }
 }

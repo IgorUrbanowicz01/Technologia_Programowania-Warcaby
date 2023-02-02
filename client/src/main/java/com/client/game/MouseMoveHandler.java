@@ -37,7 +37,7 @@ public class MouseMoveHandler implements EventHandler<MouseEvent> {
             } else {
                 pawnX = field.getWidth();
                 pawnY = field.getHeight();
-                if (ccba.checkersBoard.getBoard()[pawnY][pawnX] != playerNumber) {
+                if (ccba.checkersBoard.getBoard()[pawnY][pawnX].getPlayer() != playerNumber) {
                     return;
                 }
                 isPawnChoosen = true;
@@ -55,8 +55,8 @@ public class MouseMoveHandler implements EventHandler<MouseEvent> {
      * @throws Exception throws if pawn can't move on new position
      */
     private void move(int pawnX, int pawnY, int moveX, int moveY) throws Exception {
-        CheckersBoard logic = ccba.checkersBoard.setValidMoves(pawnY, pawnX);
-        if (logic.getBoard()[moveY][moveX] == 1) {
+        Pawn[][] logic = ccba.checkersBoard.setValidMoves(pawnY, pawnX);
+        if (logic[moveY][moveX].getPlayer() == 1) {
             ClientCore.getInstance().sendMove(pawnX, pawnY, moveX, moveY);
             ClientCore.getInstance().myTurn = false;
         } else {

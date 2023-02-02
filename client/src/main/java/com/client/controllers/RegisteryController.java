@@ -1,6 +1,5 @@
 package com.client.controllers;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,8 +11,6 @@ import com.client.helpers.exceptions.StringLengthException;
 import com.client.helpers.exceptions.StringSameValidation;
 
 import javafx.animation.TranslateTransition;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,7 +29,7 @@ import javafx.stage.Stage;
 public class RegisteryController implements Initializable {
 
     @FXML
-    private Button btnBack;
+    private Button buttonBack;
     private Button buttonCreateAccount;
     @FXML
     private TextField newLogin; 
@@ -46,8 +40,8 @@ public class RegisteryController implements Initializable {
     Pane errorPanePassword;
     Pane accountCreatedSuccesfully;
     Pane errorPanePasswordValidation;
-    Pane errorSomethinkWrong;
-    Pane  errorrThisLoginIsToShort;
+    Pane errorSomethingWrong;
+    Pane errorThisLoginIsToShort;
 
     private static Stage stage;
     private static Parent root;
@@ -64,7 +58,7 @@ public class RegisteryController implements Initializable {
         ClientCore.getInstance().setRegisteryController(this);
     }
 
-    private boolean allCorect = false;
+    private boolean allCorrect = false;
 
     /**
      * Method which controlling registration of new users.
@@ -80,7 +74,7 @@ public class RegisteryController implements Initializable {
      * @throws NumberFormatException
      */
     @FXML
-    private void createAccountButtonController(ActionEvent e)
+    public void createAccountButtonController(ActionEvent e)
             throws NumberFormatException, StringSameValidation, Exception {
 
         if (e.getSource() == buttonCreateAccount) {
@@ -100,8 +94,8 @@ public class RegisteryController implements Initializable {
                 }
             }
 
-            if (e.getSource() == btnBack) {
-                loadLoingLauncher();
+            if (e.getSource() == buttonBack) {
+                loadLoginLauncher();
             }
 
         }
@@ -114,7 +108,7 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorPaneLoginExistButton(ActionEvent e) {
+    public void errorPaneLoginExistButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorRegisteryNewAccount);
         transition.setToX(0);
@@ -127,7 +121,7 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorPanePasswordButton(ActionEvent e) {
+    public void errorPanePasswordButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorPanePassword);
         transition.setToX(0);
@@ -140,7 +134,7 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void accountCreatedSuccesfullyButton(ActionEvent e) {
+    public void accountCreatedSuccesfullyButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(false);
         transition.setNode(accountCreatedSuccesfully);
@@ -154,10 +148,10 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorLoginValidation(ActionEvent e) {
+    public void errorLoginValidation(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(false);
-        transition.setNode(errorrThisLoginIsToShort);
+        transition.setNode(errorThisLoginIsToShort);
         transition.setToX(0);
         transition.play();
     }
@@ -168,7 +162,7 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorPasswordValidtionButtonController(ActionEvent e) {
+    public void errorPasswordValidationButtonController(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(errorPanePasswordValidation);
         transition.setToX(0);
@@ -181,9 +175,9 @@ public class RegisteryController implements Initializable {
      * @param e users actionEvent
      */
     @FXML
-    private void errorSomethinkWrongButton(ActionEvent e) {
+    public void errorSomethingWrongButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
-        transition.setNode(errorSomethinkWrong);
+        transition.setNode(errorSomethingWrong);
         transition.setToX(0);
         transition.play();
     }
@@ -195,8 +189,8 @@ public class RegisteryController implements Initializable {
      * @throws IOException throws if an error occurs
      */
     @FXML
-    private void backButtonController(ActionEvent e) throws IOException {
-        loadLoingLauncher();
+    public void backButtonController(ActionEvent e) throws IOException {
+        loadLoginLauncher();
     }
 
     /**
@@ -238,20 +232,20 @@ public class RegisteryController implements Initializable {
     /**
      * Method which invokes when any error
      */
-    public void errorSomethinkWrong() {
+    public void errorSomethingWrong() {
         TranslateTransition transition = new TranslateTransition();
         accountCreatedSuccesfully.setVisible(true);
-        transition.setNode(errorSomethinkWrong);
+        transition.setNode(errorSomethingWrong);
         transition.setToX(-300);
         transition.play();
     }
 
     /**
-     * Method which load Login view
+     * Method which load login view
      * 
      * @throws IOException throws if an error occurs
      */
-    private void loadLoingLauncher() throws IOException {
+    public void loadLoginLauncher() throws IOException {
         stage = (Stage) buttonCreateAccount.getScene().getWindow();
         root = FXMLLoader.load(Routes.viewsRoute("LoginIntoLauncher.fxml"));
         Scene scene = new Scene(root, 800, 600);
@@ -306,13 +300,12 @@ public class RegisteryController implements Initializable {
      * @param string name of the lgoin
      * @return boolean true when password is longer than zero length
      */
-    private boolean loginValidation(String string) {
-
+    public boolean loginValidation(String string) {
         if (string.length() > 0) {
             return true;
         } else {
             TranslateTransition transition = new TranslateTransition();
-            transition.setNode(errorrThisLoginIsToShort);
+            transition.setNode(errorThisLoginIsToShort);
             transition.setToX(-300);
             transition.play();
             return false;
@@ -324,7 +317,7 @@ public class RegisteryController implements Initializable {
      * Setter for that is user created succesfully or not
      */
     public void setAllCorrect(boolean userIsCreated) {
-        allCorect = userIsCreated;
+        allCorrect = userIsCreated;
     }
 
     /**
@@ -332,7 +325,6 @@ public class RegisteryController implements Initializable {
      * Getter for that is user created succesfully or not
      */
     private boolean getAllCorrect() {
-        return allCorect;
+        return allCorrect;
     }
-
 }

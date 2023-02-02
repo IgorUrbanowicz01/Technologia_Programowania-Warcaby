@@ -28,12 +28,12 @@ public class LoginIntoLauncherController implements Initializable {
 
     @FXML
     private Button LoginButton;
+    @FXML
     private Button RegisteryButton;
     @FXML
     private TextField LoginField;
-    private TextField PasswordField;
     @FXML
-    private URL location;
+    private TextField PasswordField;
     @FXML
     private Pane ErrorPane;
 
@@ -58,7 +58,7 @@ public class LoginIntoLauncherController implements Initializable {
      * @throws Exception
      */
     @FXML
-    private void loginLauncherControllerButtons(ActionEvent event) throws Exception {
+    public void loginLauncherControllerButtons(ActionEvent event) throws Exception {
         try {
             if (event.getSource() == LoginButton) {
                 ClientCore.getInstance().reqLogin(LoginField.getText(), PasswordField.getText());
@@ -78,7 +78,7 @@ public class LoginIntoLauncherController implements Initializable {
      * @param e keyEvent
      */
     @FXML
-    private void errorButton(ActionEvent e) {
+    public void errorButton(ActionEvent e) {
         TranslateTransition transition = new TranslateTransition();
         transition.setNode(ErrorPane);
         transition.setToX(0);
@@ -124,7 +124,7 @@ public class LoginIntoLauncherController implements Initializable {
      * 
      * @throws IOException throws if an error occurs
      */
-    private void loadRegisteryScene() throws IOException {
+    public void loadRegisteryScene() throws IOException {
         stage = (Stage) RegisteryButton.getScene().getWindow();
         root = FXMLLoader.load(Routes.viewsRoute("RegisterView.fxml"));
         Scene scene = new Scene(root, 800, 600);

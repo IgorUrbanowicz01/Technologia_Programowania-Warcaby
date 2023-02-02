@@ -13,8 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -25,11 +23,16 @@ import javafx.stage.Stage;
  */
 public class LobbyController {
     @FXML
-    public Text NickName, HostName, Player1Nick, Player2Nick;
+    public Text NickName;
+    public Text HostName;
+    public Text Player1Nick;
+    public Text Player2Nick;
     @FXML
     public TextField gameName;
     @FXML
-    Button saveEditButton, goOut, startGame;
+    Button saveEditButton;
+    Button goOut;
+    Button startGame;
 
     private Boolean saveMode = false;
     private static Stage stage;

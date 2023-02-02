@@ -19,7 +19,9 @@ import com.server.ServerCore;
  */
 public class TerminalController implements Initializable {
     @FXML
-    public TextArea TerminalText, InOutTextArea;
+    public TextArea TerminalText;
+    @FXML
+    public TextArea InOutTextArea;
     @FXML
     public TextField TerminalField;
 

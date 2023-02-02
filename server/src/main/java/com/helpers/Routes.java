@@ -15,7 +15,7 @@ public class Routes {
      * @throws MalformedURLException
      */
     public static URL viewsRoute(String viewName) throws MalformedURLException {
-        File file = new File("src\\main\\java\\com\\views\\" + viewName);
+        File file = new File("src/main/java/com/views/" + viewName);
         return file.toURI().toURL();
     }
     /**
@@ -25,7 +25,7 @@ public class Routes {
      * @throws MalformedURLException
      */
     public static String styleRoute(String styleFileName) throws MalformedURLException {
-        File file = new File("src\\main\\java\\com\\styles\\" + styleFileName);
+        File file = new File("src/main/java/com/styles/" + styleFileName);
         return file.toURI().toString();
     }
     /**
@@ -35,7 +35,7 @@ public class Routes {
      * @throws MalformedURLException
      */
     public static File databaseRoute(String dbFileName) throws MalformedURLException {
-        File file = new File("DB\\" + dbFileName);
+        File file = new File("DB/" + dbFileName);
         return file;
     }
 }
